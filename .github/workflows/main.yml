@@ -32,9 +32,7 @@ jobs:
           cat > policy/policy.rego <<'EOF'
           package cicd
 
-          package cicd
-
-          deny[msg] {
+          deny[msg] if {
             some c
             endswith(input.containers[c].image, ":latest")
             msg := sprintf("Container %v is using 'latest' tag, not allowed", [input.containers[c].image])
