@@ -34,7 +34,7 @@ jobs:
 
           package cicd
 
-          deny[msg] if {
+          deny[msg] {
             some c
             endswith(input.containers[c].image, ":latest")
             msg := sprintf("Container %v is using 'latest' tag, not allowed", [input.containers[c].image])
